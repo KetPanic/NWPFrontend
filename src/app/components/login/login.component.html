@@ -1,0 +1,20 @@
+<div class="col-sm-4">
+    <!-- [formGroup]="loginForm" vezuje ovu konkretnu formu sa loginForm atributom iz modela -->
+    <form [formGroup]="loginForm" (keydown)="enterSubmit($event, loginForm.value)" (ngSubmit)="submitForm(loginForm.value)">
+        <div class="form-group">
+            <!-- formControlName atribut vezuje ovo polje forme sa poljem definisanim u FormGroup -->
+            <input type="text" class="form-control"  placeholder="Enter username" formControlName="username">
+            <!-- '?' operator proverava da li je username.errors === null, 
+                ako jeste, odmah vraca false sprecavajuci da program pukne,
+                zato sto ne mozemo da procitamo .required od null -->
+            <div class="error-message" *ngIf="username?.errors?.required"> Username is required! </div>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
+            <div class="error-message" *ngIf="password?.errors?.required"> Password is required! </div>
+            <div class="error-message" *ngIf="password?.errors?.minlength"> Password has to be at least 6 characters long! </div>
+        </div>
+        <div class = "error-message" *ngIf="isError">{{errorMessage}}</div>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
+    </form>
+</div>

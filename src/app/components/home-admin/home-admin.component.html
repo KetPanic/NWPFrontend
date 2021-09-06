@@ -1,0 +1,19 @@
+<h1>Add ticket</h1>
+<form [formGroup]="formGroup" (ngSubmit)="submitForm(formGroup.value)">
+
+    <select formControlName="flightId" >
+        <option [value]="flight.id" *ngFor="let flight of flights">
+            {{flight.originCity.name}} - {{flight.destinationCity.name}}
+        </option>
+    </select>
+    <select formControlName="companyId" >
+        <option [value]="company.id" *ngFor="let company of companies">
+            {{company.name}}
+        </option>
+    </select>
+    <input type="date" formControlName="departureDate"/>
+    <input type="date" formControlName="returnDate" />
+    <input type="number" min="0" formControlName="count" />
+    <input type="checkbox" formControlName="oneWay" />One way
+    <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,25 @@
+<h1>Tickets</h1>
+<table>
+    <tr>
+        <th>One-way</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Depart</th>
+        <th>Return</th>
+        <th>Company</th>
+        <th>Count</th>
+    </tr>
+    <tr *ngFor="let ticket of tickets">
+        <td>{{ticket.oneWay}}</td>
+        <td>{{ticket.flight.originCity.name}}</td>
+        <td>{{ticket.flight.destinationCity.name}}</td>
+        <td>{{ticket.departureDate}}</td>
+        <td>{{ticket.returnDate}}</td>
+        <td>{{ticket.company.name}}</td>
+        <td>{{ticket.count}}</td>
+        <input type="button" (click)="deleteTicket(ticket.id)" value="Delete">
+    </tr>
+    
+    <input type="button" (click)="prevPage()" value="Prev Page" [disabled] = "!hasPrev">
+    <input type="button" (click)="nextPage()" value="Next Page" [disabled] = "!hasNext">
+</table>

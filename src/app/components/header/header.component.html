@@ -1,0 +1,7 @@
+{{username}}
+{{userType}}
+<div *ngIf="isUser" class="ticketsdiv">
+    <img src="/assets/ticket.png">
+    <p class="countp">{{bookingCount}}</p>
+</div>
+<input type="button" (click)="logout()" value="Logout">
